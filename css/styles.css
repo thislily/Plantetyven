@@ -1,0 +1,221 @@
+/* style.css*/
+
+/* CSS Variables */
+:root {
+  --p-red: #da2316;
+  --p-red-hover: #a61b0d;
+  --p-beige: #ece1d6;
+  --p-dark: #2d2826;
+  --p-white: #ffffff;
+  --p-green: #475751;
+  --p-green-hover: #3b4a4a;
+  --p-grey: #6b7280;
+  --p-black: #000000;
+  --font-body: "Sen", sans-serif;
+  --font-header: "Sen", sans-serif;
+  --fw-semi-bold: 600;
+  --fw-bold: 700;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 20px;
+  line-height: 1.5;
+  font-family: var(--font-body);
+  background: var(--p-white);
+  color: var(--p-black);
+}
+
+body {
+  min-height: 100vh;
+  background: white;
+}
+
+#game-container {
+    max-width: 360px;
+    margin: 10% auto;
+    min-height: 640px;
+    background-color: var(--p-beige);
+    overflow: hidden;
+    position: relative;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+}
+#logo {
+  width: 130px;
+  padding-left: 6px;
+}
+#streak {
+  color: var(--p-dark);
+  font-size: 20px;
+  font-weight: var(--fw-semi-bold);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+}
+#streak-count {
+  font-size: 24px;
+}
+#fire-emoji {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  margin-bottom: 4px;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: var(--fw-bold);
+  color: var(--p-black);
+  margin: 12px auto 20px;
+  text-align: center;
+}
+
+#game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.shelf {
+  width: 300px;
+  height: 24px;
+  background-color: var(--p-dark);
+  border-radius: 5px;
+  margin: 0 auto 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+#plants-top,
+#plants-bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.plant {
+    width: 110px;
+    height: 110px;
+    margin: -20px;
+}
+
+/* Plant wiggle animation (triggered by JS) */
+.plant-wiggle {
+    animation: plant-wiggle .8s ease;
+}
+
+@keyframes plant-wiggle {
+    0% { transform: rotate(0deg); }
+    20% { transform: rotate(-2deg); }
+    40% { transform: rotate(2deg); }
+    60% { transform: rotate(-1deg); }
+    80% { transform: rotate(1deg); }
+    100% { transform: rotate(0deg); }
+}
+
+/* Cat arm animation */
+#cat-arm-top,
+#cat-arm-bottom {
+    height: 116px;
+    position: absolute;
+    z-index: 999;
+    pointer-events: none;
+    left: 50%;
+    transform: translateX(-200%) translateY(0); /* Start hidden far left */
+    opacity: 0;
+    transition: opacity 0.2s;
+    margin-bottom: -42px;
+}
+
+.cat-arm-animate {
+    animation: cat-arm-reach 1.2s cubic-bezier(0.77,0,0.175,1) forwards;
+    opacity: 1 !important;
+}
+
+.cat-arm-retreat {
+    animation: cat-arm-retreat 0.8s cubic-bezier(0.77,0,0.175,1) forwards;
+    opacity: 1 !important;
+}
+
+@keyframes cat-arm-reach {
+    0% {
+        transform: translateX(-200%) translateY(0);
+        opacity: 0;
+    }
+    60% {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes cat-arm-retreat {
+    0% {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-200%) translateY(0);
+        opacity: 1;
+    }
+}
+
+.info-section {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  margin: auto 0;
+}
+
+#text-display {
+  font-size: 20px;
+  color: var(--p-dark);
+  text-align: center;
+  max-width: 300px;
+}
+
+button {
+  width: max-content;
+  height: 44px;
+  padding: 0 40px;
+  margin: 0 auto;
+  display: block;
+  background-color: var(--p-red);
+  color: var(--p-white);
+  font-family: var(--font-body);
+  font-size: 20px;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: var(--p-red-hover);
+}
+
+#lightswitch {
+  height: 70px;
+  object-fit: contain;
+}

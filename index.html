@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sen:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script type="module" src="js/app.js"></script>
+    <title>Plantetyven</title>
+  </head>
+  <body>
+    <div id="game-container">
+      <header>
+        <img src="images/Logo.webp" alt="Plantasjen logo" id="logo" />
+        <div id="streak">
+
+          <span id="streak-label">Streak:</span>
+             <span id="streak-count">0</span>
+          <img src="images/fire-baby.webp" alt="fire emoji" id="fire-emoji" />
+        </div>
+      </header>
+      <h1>Plantetyven</h1>
+
+      <main id="game" class="hidden" aria-label="Game area">
+        <div class="plant-display">
+            <div id="plants-top">
+                <img src="images/cat-arm.webp" alt="cat arm" id="cat-arm-top" />
+                <img src="images/plant1.webp" alt="Plant 1" class="plant" />
+                <img src="images/plant2.webp" alt="Plant 2" class="plant" />
+                <img src="images/plant3.webp" alt="Plant 3" class="plant" />
+            </div>
+          <div class="shelf"></div>
+ 
+            <div id="plants-bottom">
+                <img src="images/plant4.webp" alt="Plant 4" class="plant" />
+                <img src="images/plant5.webp" alt="Plant 5" class="plant" />
+                <img src="images/plant6.webp" alt="Plant 6" class="plant" />
+            </div>
+          <div class="shelf""></div>
+        </div>
+
+        <div class="info-section">
+          <div id="controls">
+            <button id="start">Start</button>
+            <img src="images/lightswitch.webp" alt="lightswitch" id="lightswitch" />
+          </div>
+
+          <p id="text-display">Spill for å få 15% rabatt på alle inneplanter</p>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
