@@ -423,3 +423,29 @@ h1 {
   width: 100%;
   z-index: 100;         /* above everything else in #game */
 }
+
+
+@media (min-width: 600px) {
+
+  #game-container {
+    max-width: 600px; /* wider container on larger screens */
+    margin: 5% auto; /* adjust vertical margin */
+  }
+
+  p{
+    font-size: 24px; /* larger text on desktop */
+  }
+
+
+  /* lengthen the shelves on desktop */
+  .shelf {
+    width: 440px;
+  }
+
+  /* widen the space between plants */
+  #plants-top,
+  #plants-bottom {
+    gap: 32px;  /* adjust this value up or down to taste */
+  }
+}
+
