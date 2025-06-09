@@ -66,7 +66,7 @@ export function runLightswitchSequence({
 
     // 6) After slide + hold, retract & blackout
     setTimeout(() => {
-      // retract arm (no fade)
+      // retract arm 
       catArmBottom.style.transition = `transform ${RETREAT_DURATION}ms ease`;
       catArmBottom.style.transform  = "translateX(0) scaleX(-1)";
       // once retracted, hide instantly

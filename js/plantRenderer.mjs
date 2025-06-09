@@ -10,6 +10,7 @@
  * @param {HTMLElement} topContainer
  * @param {HTMLElement} bottomContainer
  */
+
 export function renderPlantRows(allPlants, topContainer, bottomContainer) {
   // 1) Shuffle and take 6
   const shuffled = [...allPlants].sort(() => Math.random() - 0.5);
