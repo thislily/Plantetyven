@@ -1,4 +1,4 @@
-/* style.css*/
+/* style.css */
 
 /* CSS Variables */
 :root {
@@ -35,16 +35,16 @@ html {
 
 body {
   min-height: 100vh;
-  background: white;
+  background: var(--p-white);
 }
 
 #game-container {
-    max-width: 360px;
-    margin: 10% auto;
-    min-height: 640px;
-    background-color: var(--p-beige);
-    overflow: hidden;
-    position: relative;
+  max-width: 360px;
+  margin: 10% auto;
+  min-height: 640px;
+  background-color: var(--p-beige);
+  overflow: hidden;
+  position: relative;
 }
 
 header {
@@ -90,6 +90,7 @@ h1 {
   align-items: center;
   gap: 20px;
   padding: 20px;
+  height: 508px;
 }
 
 .shelf {
@@ -110,73 +111,187 @@ h1 {
 }
 
 .plant {
-    width: 110px;
-    height: 110px;
-    margin: -20px;
+  width: 110px;
+  height: 110px;
+  margin: -20px;
 }
 
 /* Plant wiggle animation (triggered by JS) */
 .plant-wiggle {
-    animation: plant-wiggle .8s ease;
+  animation: plant-wiggle 0.8s ease;
 }
 
 @keyframes plant-wiggle {
-    0% { transform: rotate(0deg); }
-    20% { transform: rotate(-2deg); }
-    40% { transform: rotate(2deg); }
-    60% { transform: rotate(-1deg); }
-    80% { transform: rotate(1deg); }
-    100% { transform: rotate(0deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(-2deg);
+  }
+  40% {
+    transform: rotate(2deg);
+  }
+  60% {
+    transform: rotate(-1deg);
+  }
+  80% {
+    transform: rotate(1deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }
 
-/* Cat arm animation */
-#cat-arm-top,
+/* Cat arm positioning & initial state */
+#cat-arm-top {
+  height: 116px;
+  position: absolute;
+  z-index: 999;
+  pointer-events: none;
+  left: 0; /* anchored to left edge */
+  transform: translateX(-100%) translateY(0); /* hidden off-screen one width */
+  opacity: 0;
+  transition: opacity 0.2s;
+  margin-bottom: -42px;
+}
+
+/* style.css */
+
+/* Cat arm bottom (hidden off-screen right, flipped) */
 #cat-arm-bottom {
-    height: 116px;
-    position: absolute;
-    z-index: 999;
-    pointer-events: none;
-    left: 50%;
-    transform: translateX(-200%) translateY(0); /* Start hidden far left */
-    opacity: 0;
-    transition: opacity 0.2s;
-    margin-bottom: -42px;
+  height: 116px;
+  position: absolute;
+  z-index: 999;
+  pointer-events: none;
+  right: 0;
+  bottom: 120px;
+  transform: translateX(100%) scaleX(-1);
+  opacity: 0;
+  transition: transform 1000ms ease, opacity 0.2s ease;
 }
 
+/* When peeking in */
+#cat-arm-bottom.show-half {
+  bottom: 120px;
+  transform: translateX(calc(-50%)) scaleX(-1);
+  opacity: 1;
+}
+
+/* CSS keyframe animations for arms */
 .cat-arm-animate {
-    animation: cat-arm-reach 1.2s cubic-bezier(0.77,0,0.175,1) forwards;
-    opacity: 1 !important;
+  animation: cat-arm-reach 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+  opacity: 1 !important;
 }
 
 .cat-arm-retreat {
-    animation: cat-arm-retreat 0.8s cubic-bezier(0.77,0,0.175,1) forwards;
-    opacity: 1 !important;
+  animation: cat-arm-retreat 0.8s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+  opacity: 1 !important;
 }
 
 @keyframes cat-arm-reach {
-    0% {
-        transform: translateX(-200%) translateY(0);
-        opacity: 0;
-    }
-    60% {
-        transform: translateX(-50%) translateY(0);
-        opacity: 1;
-    }
-    100% {
-        transform: translateX(-50%) translateY(0);
-        opacity: 1;
-    }
+  0% {
+    transform: translateX(-100%) translateY(0);
+    opacity: 0;
+  }
+  60% {
+    transform: translateX(calc(-100% + 110px)) translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(calc(-100% + 110px)) translateY(0);
+    opacity: 1;
+  }
 }
 
 @keyframes cat-arm-retreat {
-    0% {
-        transform: translateX(-50%) translateY(0);
-        opacity: 1;
-    }
-    100% {
-        transform: translateX(-200%) translateY(0);
-        opacity: 1;
-    }
+  0% {
+    transform: translateX(calc(-100% + 110px)) translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100%) translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ── EYES CONTAINER ── */
+.cat-eyes {
+  position: absolute;
+  top: 50%; /* tweak to taste */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  gap: 20px; /* space between eyes */
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* ── CUTE, ROUND EYE ── */
+.cat-eyes .eye {
+  position: relative;
+  width: 60px; /* make it more circular */
+  height: 50px;
+  background: #fceb9e;
+  border-radius: 50%; /* perfect circle */
+  overflow: hidden;
+  border: 2px solid #000; /* black outline */
+}
+
+.cat-eyes .pupil {
+  position: absolute;
+  /* center in the eye */
+  width: 24px;
+  height: 30px;
+  top: 12px; /* adjust to center vertically */
+  left: 18px;
+  border-radius: 50%;
+  background-color: #000; /* solid black pupil */
+}
+
+.cat-eyes .pupil::after {
+  content: "";
+  position: absolute;
+  /* position the highlight toward the top-left of the pupil */
+  top: 4px;
+  left: 4px;
+  width: 4px;
+  height: 6px;
+  background-color: #fff; /* white highlight */
+  border-radius: 50%;
+}
+
+/* ── TOP LID: triple blink then stay open ── */
+.cat-eyes .eye::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  transform-origin: center top;
+  transform: scaleY(0);
+  /* three quick blinks, each separated by ~1s, then remain open */
+  animation: blink-sequence 4s ease-in-out forwards;
+  z-index: 2;
+}
+
+@keyframes blink-sequence {
+  /* first blink */
+  0%,
+  10%,
+  35%,
+  45%,
+  65%,
+  75%,
+  100% {
+    transform: scaleY(0);
+  } /* open */
+  5%,       /* very quick close/open */
+  40%,       /* second quick blink */
+  70%        /* third quick blink */ {
+    transform: scaleY(1);
+  } /* closed */
 }
 
 .info-section {
@@ -190,7 +305,7 @@ h1 {
 
 #text-display {
   font-size: 20px;
-  color: var(--p-dark);
+  color: var(--p-black);
   text-align: center;
   max-width: 300px;
 }
@@ -218,4 +333,54 @@ button:hover {
 #lightswitch {
   height: 70px;
   object-fit: contain;
+  display: none;
+}
+
+/* ── MISSING‐PLANT SELECTION PANEL ── */
+.selection-panel {
+  width: 300px;
+  height: 200px;
+  background: #ffffff; /* white card */
+  border: 2px solid var(--p-black); /* thick dark border */
+  border-radius: 8px; /* rounded corners */
+  box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.15); /* soft drop shadow */
+  padding: 16px;
+  margin: 0 16px; /* side margin */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* The row of three choices */
+.selection-panel .choices {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Individual choice buttons */
+.selection-panel .choice {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 10px -10px;
+}
+
+/* Plants in the panel */
+.selection-panel .choice img {
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+  border-radius: 12px; /* optional rounded image corners */
+  margin: -20;
+}
+
+/* The prompt text, now below the images */
+.selection-panel p {
+  font-size: 18px;
+  font-weight: var(--fw-semi-bold);
+  color: var(--p-dark);
+  text-align: center;
+  margin: 0;
 }
