@@ -11,6 +11,7 @@
  * @param {HTMLElement}                 params.textDisplay – the #text-display <p> for instructions/feedback
  * @param {HTMLElement}                 params.streakCount – the #streak-count <span> showing the current streak
  */
+
 export function initMissingPlantStage({
   plantEls,
   allPlantIds,

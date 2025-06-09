@@ -11,10 +11,10 @@
 const MOBILE_EXTEND_DISTANCE  = 110;  // px on mobile
 const DESKTOP_EXTEND_DISTANCE = 220;  // px on desktop (>=600px)
 
-const REACH_DURATION     = 400;   // ms
-const WIGGLE_DURATION    = 700;   // ms
-const PAUSE_AFTER_WIGGLE = 200;   // ms
-const RETREAT_DURATION   = 500;   // ms
+const REACH_DURATION     = 400;   // ms to extend arm
+const WIGGLE_DURATION    = 700;   // ms for plant wiggle
+const PAUSE_AFTER_WIGGLE = 200;   // ms after wiggle before retreat
+const RETREAT_DURATION   = 500;   // ms to retreat arm
 const LOOP_PAUSE         = 800;   // ms between loops
 
 let running   = false;
