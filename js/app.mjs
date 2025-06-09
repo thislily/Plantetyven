@@ -14,7 +14,7 @@
    'plant5.webp',
    'plant6.webp',
    'plant7.webp',
-   'plant8.webp'
+   'plant8.webp',
  ];
 
  document.addEventListener('DOMContentLoaded', () => {

@@ -29,7 +29,7 @@ export function runLightswitchSequence({
     startBtn.style.display    = 'none';
     lightSwitch.style.display = 'block';
     textDisplay.textContent   = 'Hjelp oss å finne den stjålne planten';
-    textDisplay.style.color   = '';
+    textDisplay.style.width = '230px'
 
     // 2) Anchor arm off-screen right & hide
     catArmBottom.style.position  = 'absolute';
@@ -48,7 +48,7 @@ export function runLightswitchSequence({
     requestAnimationFrame(() => {
       catArmBottom.style.transition =
         `transform ${SLIDE_DURATION}ms ease, opacity 0.2s ease`;
-      catArmBottom.style.transform  = 'translateX(160px) scaleX(-1)';
+      catArmBottom.style.transform  = 'translateX(80px) scaleX(-1)';
       catArmBottom.style.opacity    = '1';
     });
 
@@ -62,7 +62,9 @@ export function runLightswitchSequence({
       const game = document.getElementById('game');
       game.style.transition      = `background-color ${FADE_DURATION}ms ease`;
       game.style.backgroundColor = '#000';
-
+      textDisplay.style.color = 'var(--p-white)';
+      textDisplay.textContent = 'Å nei!';
+      textDisplay.style.marginBottom = '24px'
       // hide plants & controls
       const plantDisplay = game.querySelector('.plant-display');
       const controls     = game.querySelector('#controls');
@@ -80,6 +82,7 @@ export function runLightswitchSequence({
       setTimeout(() => {
         // revert background & show plants
         game.style.backgroundColor = 'var(--p-beige)';
+        textDisplay.style.color = 'var(--p-black)'; // revert text color
         if (plantDisplay) plantDisplay.style.opacity = '1';
 
         // hide the eyes
