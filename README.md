@@ -20,7 +20,7 @@ A lightweight, vanilla-JS interpretation of “What’s Missing” (Kim’s Game
 - **Live Site**: https://plantetyven.netlify.app/
 - **Figma Prototype**: https://www.figma.com/design/BJ3g8BDxBIDlMzFX4M09UE/Untitled?node-id=4-2&t=JjUzTMLq8NSUQ0Wd-1
 
-![App Screenshot](images/screenshot.png)
+![App Screenshot](images/Screenshot.png)
 
 
 ---
