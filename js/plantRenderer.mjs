@@ -19,11 +19,9 @@ export function renderPlantRows(allPlants, topContainer, bottomContainer) {
 
   // 2) Clear out any old plants (but keep the cat-arm)
   [topContainer, bottomContainer].forEach(container => {
-    Array.from(container.children).forEach(child => {
-      if (!child.id?.startsWith('cat-arm')) {
-        container.removeChild(child);
-      }
-    });
+    Array.from(container.children)
+      .filter(child => !child.id?.startsWith('cat-arm'))
+      .forEach(child => container.removeChild(child));
   });
 
   // 3) Setup an IntersectionObserver to load images when they appear
