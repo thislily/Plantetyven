@@ -46,7 +46,7 @@ export function renderPlantRows(allPlants, topContainer, bottomContainer) {
   // 4) Helper to create a lazy‐loaded <img>
   function makePlantImg(filename) {
     const img = document.createElement("img");
-    img.alt = `Plant ${filename.match(/\d+/)[0]}`;
+    img.alt = `Plant`;
     img.className = "plant";
     img.dataset.plant = filename;
     img.dataset.src = `images/${filename}`; // hold real URL in data-src
