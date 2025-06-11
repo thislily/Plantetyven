@@ -50,10 +50,8 @@ document.addEventListener("DOMContentLoaded", () => {
     streakCount.textContent = savedStreak;
   }
 
-  +(
-    // ----- initial plant render for intro -----
-    (+renderPlantRows(ALL_PLANTS, topShelf, bottomShelf))
-  );
+  // ----- initial plant render for intro -----
+  renderPlantRows(ALL_PLANTS, topShelf, bottomShelf);
 
   // ----- start the intro loop -----
   startingLoop(catArmTop);
